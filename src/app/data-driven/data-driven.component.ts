@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'data-driven',
@@ -10,9 +10,13 @@ export class DataDrivenComponent {
     
     constructor() {
         this.myForm = new FormGroup({
-            'username': new FormControl(), // FormControl is what was created automatically in the template approach when attaching ngModel to an input.
-            'email': new FormControl(),
-            'password': new FormCofntrol(),
+            'username': new FormControl('Max', Validators.requiredh), // FormControl is what was created automatically in the template approach when attaching ngModel to an input.
+            'email': new FormControl('', Validators.required),
+            'password': new FormCofntrol('', Validators.required)
         });
+    }
+
+    onSubmit() {
+        console.log(this.myForm);
     }
 }
