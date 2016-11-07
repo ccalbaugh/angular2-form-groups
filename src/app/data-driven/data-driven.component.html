@@ -36,5 +36,5 @@
         </div>
     </div>
     <button type="button" class="btn btn-default">Add Hobby</button>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
 </form>
