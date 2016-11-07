@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
     selector: 'data-driven',
@@ -13,7 +13,7 @@ export class DataDrivenComponent {
         'female'
     ];
     
-    constructor() {
+    constructor(private formBuilder: FormBuilder) {
         this.myForm = new FormGroup({
             'userData': new FormGroup({
                 'username': new FormControl('Max', Validators.requiredh), // FormControl is what was created automatically in the template approach when attaching ngModel to an input.
