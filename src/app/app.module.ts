@@ -9,7 +9,7 @@ import { TemplateDrivenComponent } from "./template-driven/template-driven.compo
 
 @NgModule({
     declarations: [AppComponent, DataDrivenComponent, TemplateDrivenComponent],
-    imports: [BrowserModule, FormsModule, ReactiveFormsModule],
+    imports: [BrowserModule, FormsModule, ReactiveFormsModule],// FormsModule added for template driven approach, ReactiveForms for data-driven
     bootstrap: [AppComponent]
 })
 export class AppModule {}
