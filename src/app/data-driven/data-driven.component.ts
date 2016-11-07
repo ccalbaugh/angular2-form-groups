@@ -14,17 +14,32 @@ export class DataDrivenComponent {
     ];
     
     constructor(private formBuilder: FormBuilder) {
-        this.myForm = new FormGroup({
-            'userData': new FormGroup({
-                'username': new FormControl('Max', Validators.requiredh), // FormControl is what was created automatically in the template approach when attaching ngModel to an input.
-                'email': new FormControl('', [
+        // this.myForm = new FormGroup({
+        //     'userData': new FormGroup({
+        //         'username': new FormControl('Max', Validators.required), // FormControl is what was created automatically in the template approach when attaching ngModel to an input.
+        //         'email': new FormControl('', [
+        //             Validators.required, 
+        //             Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]),
+        //     }),
+        //     'password': new FormControl('', Validators.required),
+        //     'gender': new FormControl('male'),
+        //     'hobbies': new FormArray([
+        //         new FormControl('Cooking', Validators.required)
+        //     ])
+        // });
+
+        this.myForm = formBuilder.group({
+            'userData': formBuilder.group({
+                'username': ['Max', Validators.required], // FormControl is what was created automatically in the template approach when attaching ngModel to an input.
+                'email': ['', [
                     Validators.required, 
-                    Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]),
+                    Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+                ]]
             }),
-            'password': new FormControl('', Validators.required),
-            'gender': new FormControl('male'),
-            'hobbies': new FormArray([
-                new FormControl('Cooking', Validators.required)
+            'password': ['', Validators.required],
+            'gender': ['male'],
+            'hobbies': formBuilder.array([
+                ['Cooking', Validators.required]
             ])
         });
     }
