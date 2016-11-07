@@ -30,7 +30,7 @@ export class DataDrivenComponent {
 
         this.myForm = formBuilder.group({
             'userData': formBuilder.group({
-                'username': ['Max', Validators.required], // FormControl is what was created automatically in the template approach when attaching ngModel to an input.
+                'username': ['Max', [Validators.required, this.exampleValidator]], // FormControl is what was created automatically in the template approach when attaching ngModel to an input.
                 'email': ['', [
                     Validators.required, 
                     Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
@@ -50,5 +50,12 @@ export class DataDrivenComponent {
 
     onSubmit() {
         console.log(this.myForm);
+    }
+
+    exampleValidator(control: FormControl): {[s: string]: boolean} {
+        if (control.value === 'Example') {
+            return {example: true}; // Validation WILL FAIL as long as your return an object
+        } 
+        return null;
     }
 }
