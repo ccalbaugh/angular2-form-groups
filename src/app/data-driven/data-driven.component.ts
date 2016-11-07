@@ -24,9 +24,13 @@ export class DataDrivenComponent {
             'password': new FormControl('', Validators.required),
             'gender': new FormControl('male'),
             'hobbies': new FormArray([
-                new FormControl('Cooking')
+                new FormControl('Cooking', Validators.required)
             ])
         });
+    }
+
+    onAddHobby() {
+        (<FormArray>this.myForm.find('hobbies')).push(new FormControl('', Validators.required));// casting for safety
     }
 
     onSubmit() {
